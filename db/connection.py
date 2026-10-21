@@ -1,11 +1,10 @@
 import os
-from pathlib import Path
 
 import psycopg
 from dotenv import load_dotenv
 
 
-load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+load_dotenv(".env")
 
 if not os.getenv("DB_NAME"):
     raise RuntimeError("DB_NAME is not set. Add it to your .env file.")
