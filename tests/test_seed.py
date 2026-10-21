@@ -59,3 +59,46 @@ def test_reseeding_restores_users_and_schema(connection):
         ("name", "character varying", 255, "NO"),
         ("created_at", "timestamp with time zone", None, "YES"),
     ]
+
+
+def test_inserts_all_venues(connection):
+    with open("db/data/venues.json", encoding="utf-8") as data_file:
+        venues = json.load(data_file)
+
+    rows = connection.execute(
+        "SELECT id, name, address, capacity FROM venues ORDER BY id"
+    ).fetchall()
+
+    assert rows == [
+        (index, venue["name"], venue["address"], venue["capacity"])
+        for index, venue in enumerate(venues, start=1)
+    ]
+
+
+def test_reseeding_restores_venues_and_schema(connection):
+    query = "SELECT id, name, address, capacity FROM venues ORDER BY id"
+    with connection.transaction():
+        original_venues = connection.execute(query).fetchall()
+        connection.execute("ALTER TABLE venues ADD COLUMN stale BOOLEAN")
+        connection.execute(
+            "INSERT INTO venues (name, address, capacity) VALUES (%s, %s, %s)",
+            ("Old Venue", "Old Address", 10),
+        )
+
+    seed()
+
+    assert connection.execute(query).fetchall() == original_venues
+    columns = connection.execute(
+        """
+        SELECT column_name, data_type, character_maximum_length, is_nullable
+        FROM information_schema.columns
+        WHERE table_schema = 'public' AND table_name = 'venues'
+        ORDER BY ordinal_position
+        """
+    ).fetchall()
+    assert columns == [
+        ("id", "integer", None, "NO"),
+        ("name", "character varying", 255, "NO"),
+        ("address", "text", None, "YES"),
+        ("capacity", "integer", None, "YES"),
+    ]
