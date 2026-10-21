@@ -47,9 +47,9 @@ Run from the project root:
 python3 db/seed.py
 ```
 
-This drops and recreates `users`, then loads `db/data/users.json`.
-User helpers live in `db/schemas/users.py`; the table definition is in
-[`db/schemas/users.sql`](db/schemas/users.sql).
+This drops and recreates `users` and `venues`, then loads their JSON files from
+`db/data`. Table helpers live in `db/schemas`, alongside the SQL definitions for
+[`users`](db/schemas/users.sql) and [`venues`](db/schemas/venues.sql).
 
 Run the seed tests from the project root:
 
@@ -57,4 +57,4 @@ Run the seed tests from the project root:
 python3 -m pytest -q
 ```
 
-These tests reset the users table in the database configured in `.env`.
+These tests reset the users and venues tables in the database configured in `.env`.
