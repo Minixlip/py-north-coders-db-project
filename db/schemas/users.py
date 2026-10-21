@@ -3,7 +3,7 @@ def drop_users_table(cursor):
 
 
 def create_users_table(cursor):
-    with open("db/schemas/users.sql", encoding="utf-8") as schema_file:
+    with open("./schemas/users.sql", encoding="utf-8") as schema_file:
         cursor.execute(schema_file.read())
 
 

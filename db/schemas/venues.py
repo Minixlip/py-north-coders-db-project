@@ -3,7 +3,7 @@ def drop_venues_table(cursor):
 
 
 def create_venues_table(cursor):
-    with open("db/schemas/venues.sql", encoding="utf-8") as schema_file:
+    with open("./schemas/venues.sql", encoding="utf-8") as schema_file:
         cursor.execute(schema_file.read())
 
 
