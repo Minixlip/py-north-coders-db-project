@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 import pytest
 
@@ -101,4 +102,79 @@ def test_reseeding_restores_venues_and_schema(connection):
         ("name", "character varying", 255, "NO"),
         ("address", "text", None, "YES"),
         ("capacity", "integer", None, "YES"),
+    ]
+
+
+def test_inserts_all_events(connection):
+    with open("db/data/events.json", encoding="utf-8") as data_file:
+        events = json.load(data_file)
+
+    rows = connection.execute(
+        """
+        SELECT id, title, description, starts_at, ends_at,
+               organiser_id, venue_id, created_at
+        FROM events ORDER BY id
+        """
+    ).fetchall()
+
+    assert [row[:7] for row in rows] == [
+        (
+            index, event["title"], event["description"],
+            datetime.fromisoformat(event["starts_at"]),
+            datetime.fromisoformat(event["ends_at"]),
+            event["organiser_id"], event["venue_id"],
+        )
+        for index, event in enumerate(events, start=1)
+    ]
+    assert all(row[7] is not None for row in rows)
+
+
+def test_reseeding_restores_events_and_schema(connection):
+    query = (
+        "SELECT id, title, description, starts_at, ends_at, organiser_id, venue_id "
+        "FROM events ORDER BY id"
+    )
+    with connection.transaction():
+        original_events = connection.execute(query).fetchall()
+        connection.execute("ALTER TABLE events ADD COLUMN stale BOOLEAN")
+        connection.execute(
+            """
+            INSERT INTO events (title, starts_at, ends_at, organiser_id, venue_id)
+            VALUES (%s, %s, %s, %s, %s)
+            """,
+            ("Old Event", "2020-01-01T10:00:00Z", "2020-01-01T12:00:00Z", 1, 1),
+        )
+
+    seed()
+
+    assert connection.execute(query).fetchall() == original_events
+    columns = connection.execute(
+        """
+        SELECT column_name, data_type, character_maximum_length, is_nullable
+        FROM information_schema.columns
+        WHERE table_schema = 'public' AND table_name = 'events'
+        ORDER BY ordinal_position
+        """
+    ).fetchall()
+    assert columns == [
+        ("id", "integer", None, "NO"),
+        ("title", "character varying", 255, "NO"),
+        ("description", "character varying", 255, "YES"),
+        ("starts_at", "timestamp with time zone", None, "NO"),
+        ("ends_at", "timestamp with time zone", None, "NO"),
+        ("organiser_id", "integer", None, "YES"),
+        ("venue_id", "integer", None, "YES"),
+        ("created_at", "timestamp with time zone", None, "YES"),
+    ]
+    foreign_keys = connection.execute(
+        """
+        SELECT pg_get_constraintdef(oid)
+        FROM pg_constraint
+        WHERE conrelid = 'events'::regclass AND contype = 'f'
+        ORDER BY conname
+        """
+    ).fetchall()
+    assert foreign_keys == [
+        ("FOREIGN KEY (organiser_id) REFERENCES users(id)",),
+        ("FOREIGN KEY (venue_id) REFERENCES venues(id)",),
     ]
