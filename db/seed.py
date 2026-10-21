@@ -14,7 +14,7 @@ else:
 
 def seed():
     """Recreate users, venues and events and load the JSON seed data."""
-    with open("db/data/users.json", encoding="utf-8") as data_file:
+    with open("./data/users.json", encoding="utf-8") as data_file:
         users = json.load(data_file)
     with open("./data/venues.json", encoding="utf-8") as data_file:
         venues = json.load(data_file)
