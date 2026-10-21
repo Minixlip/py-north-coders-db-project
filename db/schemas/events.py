@@ -3,7 +3,7 @@ def drop_events_table(cursor):
 
 
 def create_events_table(cursor):
-    with open("db/schemas/events.sql", encoding="utf-8") as schema_file:
+    with open("./schemas/events.sql", encoding="utf-8") as schema_file:
         cursor.execute(schema_file.read())
 
 
