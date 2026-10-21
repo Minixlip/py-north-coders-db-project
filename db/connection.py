@@ -10,6 +10,11 @@ if not os.getenv("DB_NAME"):
     raise RuntimeError("DB_NAME is not set. Add it to your .env file.")
 
 
+if not os.getenv("DB_USER"):
+    raise RuntimeError("DB_USER is not set. Add it to your .env file.")
+
+# Also would add DB_PASSWORD validation below
+
 connection = psycopg.connect(
     dbname=os.environ["DB_NAME"],
     user=os.environ["DB_USER"],
