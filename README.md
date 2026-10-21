@@ -41,16 +41,16 @@ psql -d nc_plus_one
 
 ## Seeding
 
-Run from the project root:
+Run from the `db` directory:
 
 ```sh
-python3 db/seed.py
+python3 seed.py
 ```
 
-This drops and recreates `users`, `venues` and `events`, then loads their JSON files from
+This drops and recreates `users`, `venues`, `events` and `rsvps`, then loads their JSON files from
 `db/data`. Table helpers live in `db/schemas`, alongside the SQL definitions for
-[`users`](db/schemas/users.sql), [`venues`](db/schemas/venues.sql) and
-[`events`](db/schemas/events.sql).
+[`users`](db/schemas/users.sql), [`venues`](db/schemas/venues.sql),
+[`events`](db/schemas/events.sql) and [`rsvps`](db/schemas/rsvps.sql).
 
 Run the seed tests from the project root:
 
@@ -58,4 +58,4 @@ Run the seed tests from the project root:
 python3 -m pytest -q
 ```
 
-These tests reset the users, venues and events tables in the database configured in `.env`.
+These tests reset all four tables in the database configured in `.env`.
