@@ -13,7 +13,15 @@ Fill in `.env` with your own local database settings: `DB_NAME` (`nc_plus_one`),
 `DB_USER`, `DB_PASSWORD`, `DB_HOST` and `DB_PORT`. Leave `DB_PASSWORD` empty if your
 local setup doesn't use one. `.env` is ignored by Git.
 
-Import the connection with `from db.connection import connection`.
+To use the shared connection:
+
+```python
+from db.connection import db_connection
+
+connection = db_connection()
+```
+
+Close it when your script finishes; all callers share the same connection.
 
 ## Database Setup
 
