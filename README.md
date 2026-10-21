@@ -15,3 +15,13 @@ To connect:
 ```sh
 psql -d nc_plus_one
 ```
+
+## Seeding
+
+Run from the project root:
+
+```sh
+python3 db/seed.py
+```
+
+The seed function is a placeholder for now and makes no database changes.
