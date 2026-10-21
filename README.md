@@ -47,4 +47,14 @@ Run from the project root:
 python3 db/seed.py
 ```
 
-The seed function is a placeholder for now and makes no database changes.
+This drops and recreates `users`, then loads `db/data/users.json`.
+User helpers live in `db/schemas/users.py`; the table definition is in
+[`db/schemas/users.sql`](db/schemas/users.sql).
+
+Run the seed tests from the project root:
+
+```sh
+python3 -m pytest -q
+```
+
+These tests reset the users table in the database configured in `.env`.
