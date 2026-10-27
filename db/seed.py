@@ -1,5 +1,7 @@
 import json
 
+from pwdlib import PasswordHash
+
 if __package__:
     from .connection import db_connection
     from .schemas.events import create_events_table, drop_events_table, insert_events
@@ -15,7 +17,7 @@ else:
 
 
 def seed():
-    """Recreate users, venues, events and RSVPs and load the JSON seed data."""
+    """Recreate the tables and load seed data, hashing user passwords first."""
     with open("./data/users.json", encoding="utf-8") as data_file:
         users = json.load(data_file)
     with open("./data/venues.json", encoding="utf-8") as data_file:
@@ -24,6 +26,10 @@ def seed():
         events = json.load(data_file)
     with open("./data/rsvps.json", encoding="utf-8") as data_file:
         rsvps = json.load(data_file)
+
+    password_hash = PasswordHash.recommended()
+    for user in users:
+        user["password"] = password_hash.hash(user["password"])
 
     connection = db_connection()
     with connection.transaction():

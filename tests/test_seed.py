@@ -1,7 +1,9 @@
 import json
 from datetime import datetime
+from pathlib import Path
 
 import pytest
+from pwdlib import PasswordHash
 
 from db.connection import db_connection
 from db.seed import seed
@@ -20,11 +22,9 @@ def seed_database(monkeypatch):
 @pytest.fixture
 def connection(seed_database):
     connection = db_connection()
-    seed_database()
-    try:
+    with connection.transaction(force_rollback=True):
+        seed_database()
         yield connection
-    finally:
-        connection.rollback()
 
 
 def test_inserts_all_users(connection):
@@ -35,15 +35,40 @@ def test_inserts_all_users(connection):
         "SELECT id, email, password, name, created_at FROM users ORDER BY id"
     ).fetchall()
 
-    assert [row[:4] for row in rows] == [
-        (index, user["email"], user["password"], user["name"])
+    assert [(row[0], row[1], row[3]) for row in rows] == [
+        (index, user["email"], user["name"])
         for index, user in enumerate(users, start=1)
     ]
     assert all(row[4] is not None for row in rows)
 
+    password_hash = PasswordHash.recommended()
+    for row, user in zip(rows, users):
+        stored_password = row[2]
+        assert stored_password != user["password"]
+        assert password_hash.verify(user["password"], stored_password)
+        assert not password_hash.verify(user["password"] + "-wrong", stored_password)
+
+
+def test_reseeding_creates_fresh_hashes_without_changing_inputs(connection, seed_database):
+    data_path = Path("db/data/users.json")
+    original_data = data_path.read_bytes()
+    users = json.loads(original_data)
+    query = "SELECT password FROM users ORDER BY id"
+    original_hashes = connection.execute(query).fetchall()
+
+    seed_database()
+
+    new_hashes = connection.execute(query).fetchall()
+    assert len(new_hashes) == len(original_hashes) == len(users)
+    password_hash = PasswordHash.recommended()
+    for original, new, user in zip(original_hashes, new_hashes, users):
+        assert original[0] != new[0]
+        assert password_hash.verify(user["password"], new[0])
+    assert data_path.read_bytes() == original_data
+
 
 def test_reseeding_restores_users_and_schema(connection, seed_database):
-    query = "SELECT id, email, password, name FROM users ORDER BY id"
+    query = "SELECT id, email, name FROM users ORDER BY id"
     with connection.transaction():
         original_users = connection.execute(query).fetchall()
         connection.execute("ALTER TABLE users ADD COLUMN stale BOOLEAN")
