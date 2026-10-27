@@ -1,7 +1,6 @@
 from fastapi import APIRouter,HTTPException
-from db.connection import connection
-from src.controller.events.events import fetch_events
-from src.types.events.event import Event
+from src.controller.events.events import fetch_events,fetch_event
+from src.types.events.event import Event, EventWithVenue
 router = APIRouter(prefix="/events")
 
 @router.get("",response_model=dict[str,list[Event]], status_code=200)
@@ -13,4 +12,7 @@ def get_events():
         raise HTTPException(status_code=500, detail=e)
     
     return(event_list)
-    
+
+@router.get("/{id}", response_model=dict[str, EventWithVenue])
+def get_event(id: int):
+    return fetch_event(id)
