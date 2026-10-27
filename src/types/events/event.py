@@ -10,3 +10,9 @@ class Event(BaseModel):
     venue_id: int | None
     created_at: datetime | None
     
+    
+class EventWithVenue(Event):
+    venue_name: str | None
+    venue_address: str | None
+    venue_capacity: int | None
+    
