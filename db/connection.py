@@ -16,6 +16,7 @@ if not os.getenv("DB_USER"):
 # Also would add DB_PASSWORD validation below
 
 connection = psycopg.connect(
+    autocommit=True,
     dbname=os.environ["DB_NAME"],
     user=os.environ["DB_USER"],
     password=os.environ["DB_PASSWORD"],
