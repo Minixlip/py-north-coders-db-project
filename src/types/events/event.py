@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, field_validator
 class Event(BaseModel):
     id: int
@@ -38,3 +38,17 @@ class CreateNewEventResponse(CreateNewEvent):
     id: int
     organiser_id : int
     created_at : datetime
+
+
+class UpdatedEvent(BaseModel):
+    title: str | None = None
+    description: str | None = None
+    starts_at: datetime | None = None
+    ends_at: datetime | None = None
+    venue_id: int | None = None
+
+    @field_validator("starts_at", "ends_at", mode="before")
+    @classmethod
+    def validate_dates(cls, value):
+        parsed = CreateNewEvent.validate_dates(value)
+        return parsed if parsed.tzinfo else parsed.replace(tzinfo=timezone.utc)
