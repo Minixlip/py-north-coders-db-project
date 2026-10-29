@@ -32,24 +32,17 @@ def rsvp_event(event_id: int, user_id: int):
             return cursor.fetchone()
 
 
-def delete_rsvp(event_id, user_id: int):
+def delete_rsvp(event_id: int, user_id: int):
     conn = db_connection()
-    
     with conn.transaction():
         with conn.cursor(row_factory=dict_row) as cursor:
             cursor.execute(
-                            """
-                            SELECT *
-                            FROM events
-                            WHERE id =  %s
-                            """,
-                            (event_id),
-                        )
-            found_event = cursor.fetchone()
-            
-            if not found_event: 
-                raise HTTPException(status_code=404, detail="Couldn't find event.")
-            
-            cursor.execute("DELETE FROM events WHERE event_id = %s", event_id)
-            
-        
+                """
+                DELETE FROM rsvps
+                WHERE event_id = %s AND attendee_id = %s
+                RETURNING id
+                """,
+                (event_id, user_id),
+            )
+            if cursor.fetchone() is None:
+                raise HTTPException(status_code=404, detail="RSVP not found.")
