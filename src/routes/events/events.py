@@ -1,7 +1,7 @@
 from fastapi import APIRouter,HTTPException
 from src.controller.events.events import fetch_events,fetch_event
 from src.types.events.event import Event, EventWithVenue
-router = APIRouter(prefix="/events")
+router = APIRouter(prefix="/api/events")
 
 @router.get("",response_model=dict[str,list[Event]], status_code=200)
 def get_events():
