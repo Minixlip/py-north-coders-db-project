@@ -193,3 +193,37 @@ def test_patch_event_rejects_invalid_dates_and_ranges(client, connection, authen
 
     assert response.status_code == 400
     assert connection.execute(query).fetchall() == before
+
+
+def test_get_attendees_returns_only_rsvped_users_without_passwords(client, authenticated_headers):
+    response = client.get("/api/events/1/attendees", headers=authenticated_headers)
+
+    assert response.status_code == 200
+    with (PROJECT_ROOT / "db/data/users.json").open(encoding="utf-8") as data_file:
+        users = json.load(data_file)
+    expected = [
+        {"id": user_id, "name": user["name"], "email": user["email"]}
+        for user_id, user in enumerate(users, start=1)
+        if user_id in {2, 3, 4, 5}
+    ]
+    assert response.json() == {"attendees": expected}
+
+
+@pytest.mark.parametrize("user_id, event_id, status", [
+    (None, 1, 401),
+    ("invalid", 1, 401),
+    (2, 1, 403),
+    (1, 999999, 404),
+])
+def test_get_attendees_rejects_invalid_access(client, authenticated_headers, user_id, event_id, status):
+    headers = authenticated_headers
+    if user_id is None:
+        headers = {}
+    elif user_id == "invalid":
+        headers = {"Authorization": "Bearer invalid-token"}
+    elif user_id != 1:
+        headers = {"Authorization": f"Bearer {create_access_token(user_id)}"}
+
+    response = client.get(f"/api/events/{event_id}/attendees", headers=headers)
+
+    assert response.status_code == status
