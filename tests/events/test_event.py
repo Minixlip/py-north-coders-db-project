@@ -32,7 +32,7 @@ def client(connection):
 
 
 def test_get_events_returns_all_events_as_json(client):
-    response = client.get("/events")
+    response = client.get("/api/events")
 
     assert response.status_code == 200
     assert response.headers["content-type"] == "application/json"
@@ -78,7 +78,7 @@ def test_get_events_orders_by_start_time_then_id(client, connection):
             ],
         )
 
-    response = client.get("/events")
+    response = client.get("/api/events")
 
     assert response.status_code == 200
     assert [event["id"] for event in response.json()["events"]] == [10, 20, 30]
@@ -88,7 +88,7 @@ def test_get_events_returns_an_empty_list_when_no_events_exist(client, connectio
     connection.execute("DELETE FROM rsvps")
     connection.execute("DELETE FROM events")
 
-    response = client.get("/events")
+    response = client.get("/api/events")
 
     assert response.status_code == 200
     assert response.json() == {"events": []}
@@ -103,7 +103,7 @@ def test_get_events_returns_null_for_nullable_fields(client, connection):
         """
     )
 
-    response = client.get("/events")
+    response = client.get("/api/events")
 
     assert response.status_code == 200
     event = next(event for event in response.json()["events"] if event["id"] == 1)

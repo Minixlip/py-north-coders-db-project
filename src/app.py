@@ -15,6 +15,10 @@ app.include_router(rsvp_router)
 
 @app.exception_handler(RequestValidationError)
 async def validation_error_handler(request, exc):
+    if request.method == "POST" and request.url.path == "/api/events":
+        return JSONResponse(
+            status_code=400, content={"detail": "Missing or invalid event fields."}
+        )
     if request.url.path == "/api/auth/register":
         return JSONResponse(
             status_code=400, content={"detail": "Invalid registration details."}

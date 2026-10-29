@@ -1,5 +1,5 @@
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, field_validator
 class Event(BaseModel):
     id: int
     title: str
@@ -15,4 +15,26 @@ class EventWithVenue(Event):
     venue_name: str | None
     venue_address: str | None
     venue_capacity: int | None
-    
+
+
+class CreateNewEvent(BaseModel):
+    title : str
+    description :  str
+    starts_at : datetime
+    ends_at : datetime
+    venue_id : int
+
+    @field_validator("starts_at", "ends_at", mode="before")
+    @classmethod
+    def validate_dates(cls, value):
+        if isinstance(value, datetime):
+            return value
+        if not isinstance(value, str):
+            raise ValueError("Dates must be ISO 8601 strings.")
+        return datetime.fromisoformat(value)
+
+
+class CreateNewEventResponse(CreateNewEvent):
+    id: int
+    organiser_id : int
+    created_at : datetime
