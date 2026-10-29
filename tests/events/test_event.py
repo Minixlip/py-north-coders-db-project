@@ -4,10 +4,12 @@ from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
+from psycopg.rows import dict_row
 
 from db.connection import db_connection
 from db.seed import seed
 from src.app import app
+from src.security import create_access_token
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
@@ -29,6 +31,12 @@ def connection(monkeypatch):
 def client(connection):
     with TestClient(app) as client:
         yield client
+
+
+@pytest.fixture
+def authenticated_headers(monkeypatch):
+    monkeypatch.setenv("JWT_SECRET_KEY", "integration-test-signing-key-for-event-patch-tests")
+    return {"Authorization": f"Bearer {create_access_token(1)}"}
 
 
 def test_get_events_returns_all_events_as_json(client):
@@ -109,3 +117,79 @@ def test_get_events_returns_null_for_nullable_fields(client, connection):
     event = next(event for event in response.json()["events"] if event["id"] == 1)
     for field in ("description", "organiser_id", "venue_id", "created_at"):
         assert event[field] is None
+
+
+@pytest.mark.parametrize("changes", [
+    {"description": "Updated description"},
+    {
+        "title": "Updated event",
+        "venue_id": 3,
+        "starts_at": "2027-08-16T19:00:00Z",
+        "ends_at": "2027-08-16T23:00:00Z",
+    },
+])
+def test_patch_event_updates_only_submitted_fields(client, connection, authenticated_headers, changes):
+    with connection.cursor(row_factory=dict_row) as cursor:
+        cursor.execute("SELECT * FROM events ORDER BY id")
+        before = cursor.fetchall()
+
+    response = client.patch("/api/events/1", json=changes, headers=authenticated_headers)
+
+    assert response.status_code == 200
+    assert set(response.json()) == {"event"}
+    expected = {**before[0], **changes}
+    for field in ("starts_at", "ends_at"):
+        if field in changes:
+            expected[field] = datetime.fromisoformat(changes[field])
+    event = response.json()["event"]
+    for field in ("starts_at", "ends_at", "created_at"):
+        event[field] = datetime.fromisoformat(event[field])
+    assert event == expected
+    with connection.cursor(row_factory=dict_row) as cursor:
+        cursor.execute("SELECT * FROM events ORDER BY id")
+        assert cursor.fetchall() == [expected, *before[1:]]
+
+
+@pytest.mark.parametrize("case, event_id, status", [
+    ("missing_token", 1, 401),
+    ("invalid_token", 1, 401),
+    ("not_organiser", 1, 403),
+    ("missing_event", 999999, 404),
+])
+def test_patch_event_rejects_unauthorised_or_missing_events(
+    client, connection, authenticated_headers, case, event_id, status
+):
+    query = "SELECT * FROM events ORDER BY id"
+    before = connection.execute(query).fetchall()
+    headers = authenticated_headers
+    if case == "missing_token":
+        headers = {}
+    elif case == "invalid_token":
+        headers = {"Authorization": "Bearer invalid-token"}
+    elif case == "not_organiser":
+        headers = {"Authorization": f"Bearer {create_access_token(2)}"}
+
+    response = client.patch(
+        f"/api/events/{event_id}", json={"description": "Changed"}, headers=headers
+    )
+
+    assert response.status_code == status
+    assert connection.execute(query).fetchall() == before
+
+
+@pytest.mark.parametrize("changes", [
+    {"starts_at": "not-a-date"},
+    {"ends_at": "not-a-date"},
+    {"starts_at": "2027-08-16T23:00:00Z", "ends_at": "2027-08-16T19:00:00Z"},
+    {"starts_at": "2027-08-16T19:00:00Z", "ends_at": "2027-08-16T19:00:00Z"},
+    {"starts_at": "2027-08-16T19:00:00Z"},
+    {"ends_at": "2020-01-01T19:00:00Z"},
+])
+def test_patch_event_rejects_invalid_dates_and_ranges(client, connection, authenticated_headers, changes):
+    query = "SELECT * FROM events ORDER BY id"
+    before = connection.execute(query).fetchall()
+
+    response = client.patch("/api/events/1", json=changes, headers=authenticated_headers)
+
+    assert response.status_code == 400
+    assert connection.execute(query).fetchall() == before
