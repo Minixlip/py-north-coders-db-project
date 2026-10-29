@@ -90,3 +90,46 @@ def test_rsvp_rejects_missing_events_and_duplicates(client, connection, event_id
 
     assert response.status_code == expected_status
     assert connection.execute("SELECT COUNT(*) FROM rsvps").fetchone()[0] == before
+
+
+def test_delete_rsvp_removes_only_the_authenticated_users_rsvp(client, connection):
+    query = "SELECT id, attendee_id, event_id FROM rsvps ORDER BY id"
+    before = connection.execute(query).fetchall()
+
+    response = client.delete(
+        "/api/events/2/rsvp/me",
+        headers={"Authorization": f"Bearer {create_access_token(1)}"},
+    )
+
+    assert response.status_code == 204
+    assert response.content == b""
+    assert connection.execute(query).fetchall() == [
+        row for row in before if row[1:] != (1, 2)
+    ]
+
+
+@pytest.mark.parametrize("token", [None, "invalid-token"])
+def test_delete_rsvp_requires_a_valid_token(client, connection, token):
+    query = "SELECT * FROM rsvps ORDER BY id"
+    before = connection.execute(query).fetchall()
+    headers = {} if token is None else {"Authorization": f"Bearer {token}"}
+
+    response = client.delete("/api/events/2/rsvp/me", headers=headers)
+
+    assert response.status_code == 401
+    assert connection.execute(query).fetchall() == before
+
+
+@pytest.mark.parametrize("event_id", [1, 999999])
+def test_delete_rsvp_returns_404_when_user_has_no_matching_rsvp(client, connection, event_id):
+    # User 1 has no RSVP for event 1, but other users do.
+    query = "SELECT * FROM rsvps ORDER BY id"
+    before = connection.execute(query).fetchall()
+
+    response = client.delete(
+        f"/api/events/{event_id}/rsvp/me",
+        headers={"Authorization": f"Bearer {create_access_token(1)}"},
+    )
+
+    assert response.status_code == 404
+    assert connection.execute(query).fetchall() == before
