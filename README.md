@@ -70,6 +70,14 @@ Server: http://127.0.0.1:8000
 
 Interactive API documentation: http://127.0.0.1:8000/docs
 
+## Browser access
+
+FastAPI's `CORSMiddleware` lets a frontend such as Vite at
+`http://localhost:5173` call the API directly. For local development it allows
+all origins, methods, and request headers, including `Authorization` and
+`Content-Type` on browser preflights. Protected routes use bearer tokens, and
+CORS credentials are disabled.
+
 ## Endpoints
 
 | Method | Endpoint | Access | Purpose |
@@ -94,6 +102,25 @@ Authorization: Bearer <access_token>
 Tokens expire after 30 minutes. Organiser endpoints also check event ownership.
 Seeded login credentials are in `db/data/users.json`. Use `/docs` to inspect
 request bodies and try the endpoints.
+
+## Frontend API client
+
+The TypeScript modules in `frontend/src/api` use the response shapes from this
+backend. Pass the API base URL to `createApiClient`, for example
+`createApiClient("http://127.0.0.1:8000")`.
+
+- Login returns `{ access_token, token_type }`. `sessionFromToken` validates
+  the locally decoded claims and checks expiry. It converts the string JWT
+  subject to a numeric user ID for comparison with an event's `organiser_id`.
+  The API verifies tokens and permissions on protected requests.
+- Event lists include `organiser_id` and `venue_id`. Event details add
+  `venue_name`, `venue_address`, and `venue_capacity`, which can be null.
+  Use `getMyEvents` to check whether the signed-in user has RSVPed.
+- The client normalizes errors to `ApiError` with a status, message, and any
+  validation issues. Incomplete login bodies and invalid event detail IDs
+  produce `422`. An RSVP cancellation returns `204` with an empty body.
+- Organiser stats, a standalone current-user profile, and a venue list are
+  absent from this backend.
 
 ## Tests
 
