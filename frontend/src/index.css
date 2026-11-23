@@ -1,0 +1,91 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    @apply min-h-screen bg-[#f7f7fc] text-slate-950 antialiased;
+  }
+
+  :where(a, button):focus-visible {
+    @apply outline-2 outline-offset-4 outline-violet-600;
+  }
+}
+
+@layer components {
+  .site-width {
+    width: min(100% - 2rem, 72rem);
+    margin-inline: auto;
+  }
+
+  .skip-link {
+    @apply fixed top-3 left-3 z-20 -translate-y-28 rounded-lg bg-white px-4 py-3 font-semibold focus:translate-y-0;
+  }
+
+  .header-inner {
+    @apply flex min-h-18 flex-wrap items-center justify-between gap-x-8;
+  }
+
+  .brand {
+    @apply inline-flex items-center gap-2.5 text-xl font-bold tracking-tight;
+  }
+
+  .brand-mark {
+    @apply grid size-9 place-items-center rounded-xl bg-violet-700 text-2xl leading-none text-white;
+  }
+
+  .site-navigation {
+    @apply flex flex-1 items-center justify-between gap-3;
+  }
+
+  .nav-links,
+  .nav-account {
+    @apply flex flex-wrap items-center gap-1;
+  }
+
+  .nav-links {
+    @apply flex-1 justify-center;
+  }
+
+  .nav-link {
+    @apply rounded-lg px-3 py-2 text-sm font-semibold whitespace-nowrap text-slate-600 hover:bg-violet-50 hover:text-violet-900;
+  }
+
+  .nav-link[aria-current='page'] {
+    @apply bg-violet-100 text-violet-900;
+  }
+
+  .register-link {
+    @apply rounded-full bg-violet-700 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-800;
+  }
+
+  .register-link[aria-current='page'] {
+    @apply bg-violet-950;
+  }
+
+  .menu-toggle {
+    @apply hidden rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700;
+  }
+
+  .banner-title {
+    font-size: clamp(2rem, 5vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.06em;
+  }
+
+  @media (width < 52rem) {
+    .menu-toggle {
+      @apply inline-flex;
+    }
+
+    .site-navigation {
+      @apply hidden flex-[0_0_100%] flex-col items-stretch gap-3 border-t border-slate-100 py-3;
+    }
+
+    .site-navigation[data-open='true'] {
+      @apply flex;
+    }
+
+    .nav-links {
+      @apply justify-start;
+    }
+  }
+}
