@@ -1,0 +1,458 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false" type="device">
+  <diagram id="page-1" name="Shared shell">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" math="0" shadow="0" background="#F4F7FC" pageHeight="906">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2" value="NC PLUS ONE" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#365D8D;fontFamily=Arial;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="29" width="1388" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v3" value="Component tree" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=34;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="58" width="1388" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v4" value="Shared layout and providers for the proposed React and TypeScript frontend" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#435671;fontFamily=Arial;fontSize=16;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="108" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v5" value="" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#D3DDEB;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="153" width="1388" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="App" value="&lt;b&gt;App&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="184" width="260" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="Router" value="&lt;b&gt;Router&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="263" width="260" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="QueryProvider" value="&lt;b&gt;QueryCacheProvider&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;server data&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="342" width="260" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="AuthProvider" value="&lt;b&gt;AuthProvider&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;session context&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="425" width="260" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="AppShell" value="&lt;b&gt;AppShell&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="340" y="508" width="260" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="SiteNav" value="&lt;b&gt;SiteNav&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;reads session context&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="594" width="250" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="RouteOutlet" value="&lt;b&gt;Route outlet&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="470" y="594" width="250" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="RootRedirect" value="&lt;b&gt;RootRedirect&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;/ → /events&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="693" width="235" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="NotFoundPage" value="&lt;b&gt;NotFoundPage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="693" width="235" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="NotFoundStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="610" y="779" width="235" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="App" target="Router">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Router" target="QueryProvider">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="QueryProvider" target="AuthProvider">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AuthProvider" target="AppShell">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AppShell" target="SiteNav">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AppShell" target="RouteOutlet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="RouteOutlet" target="RootRedirect">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="RouteOutlet" target="NotFoundPage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="NotFoundPage" target="NotFoundStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v25" value="Reading the tree" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="927" y="184" width="500" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-0" value="&lt;b&gt;Routed page&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="927" y="228" width="247" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-1" value="&lt;b&gt;Shared component&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1187" y="228" width="247" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-2" value="&lt;b&gt;Controlled form&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="927" y="280" width="247" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-3" value="&lt;b&gt;Access guard&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#F0ECFE;strokeColor=#BCB1DE;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1187" y="280" width="247" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="v30" value="&lt;b&gt;Route outlet&lt;/b&gt;&lt;br&gt;The Browse events, Account pages, and Event management tabs attach to this outlet. Shared nodes appear in each branch that uses them." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="927" y="355" width="507" height="103" as="geometry" />
+        </mxCell>
+        <mxCell id="v31" value="&lt;b&gt;Shared component props&lt;/b&gt;&lt;br&gt;The shell, providers, and guards are shared. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventForm&lt;/span&gt; is shared by Create and Edit. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventLink&lt;/span&gt; takes &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;eventId: number&lt;/span&gt; and &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;title: string&lt;/span&gt;. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventTime&lt;/span&gt; takes &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;startsAt: IsoDateTime&lt;/span&gt; and optional &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;endsAt?: IsoDateTime&lt;/span&gt;. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;StatusMessage&lt;/span&gt; takes &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;kind: &amp;quot;loading&amp;quot; | &amp;quot;empty&amp;quot; | &amp;quot;error&amp;quot;&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;message: string&lt;/span&gt;, and optional &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onRetry?: () =&amp;gt; void&lt;/span&gt;. Each appears on multiple pages. The remaining cards, lists, rows, controls, and auth forms belong to the pages shown above." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="927" y="475" width="507" height="223" as="geometry" />
+        </mxCell>
+        <mxCell id="v32" value="&lt;b&gt;Review&lt;/b&gt;&lt;br&gt;&lt;b&gt;Review pending.&lt;/b&gt; Have an instructor or peer review the four planning files before scaffolding the frontend or writing components. Update the tree and note the reason when a page, prop, or state owner changes during implementation." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="927" y="715" width="507" height="143" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-2" name="Browse events">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" math="0" shadow="0" background="#F4F7FC" pageHeight="1098">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2" value="NC PLUS ONE" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#365D8D;fontFamily=Arial;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="29" width="1388" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v3" value="Browse events" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=34;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="58" width="1388" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v4" value="Public event queries, venue details, and signed-in RSVP controls" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#435671;fontFamily=Arial;fontSize=16;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="108" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v5" value="" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#D3DDEB;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="153" width="1388" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="EventsPage" value="&lt;b&gt;EventsPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;useEvents()&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="247" y="192" width="245" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="ListStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="293" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EventList" value="&lt;b&gt;EventList&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="352" y="293" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EventCard" value="&lt;b&gt;EventCard&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;one per event&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="352" y="390" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CardLink" value="&lt;b&gt;EventLink&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="246" y="487" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CardTime" value="&lt;b&gt;EventTime&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="469" y="487" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Detail" value="&lt;b&gt;EventDetailsPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;useEvent(eventId), useMyEvents() when signed in, RSVP mutations&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="872" y="192" width="380" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="DetailStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="659" y="293" width="164" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EventDetails" value="&lt;b&gt;EventDetails&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="845" y="293" width="182" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DetailTime" value="&lt;b&gt;EventTime&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="751" y="390" width="166" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VenueDetails" value="&lt;b&gt;VenueDetails&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="956" y="390" width="169" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RsvpActions" value="&lt;b&gt;RsvpActions&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;sign-in link or RSVP controls&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1049" y="293" width="184" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OrganiserLinks" value="&lt;b&gt;OrganiserLinks&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;edit and attendee links&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1255" y="293" width="177" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventsPage" target="ListStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventsPage" target="EventList">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventList" target="EventCard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventCard" target="CardLink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventCard" target="CardTime">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Detail" target="DetailStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e25" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Detail" target="EventDetails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e26" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventDetails" target="DetailTime">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e27" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EventDetails" target="VenueDetails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e28" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Detail" target="RsvpActions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e29" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Detail" target="OrganiserLinks">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v30" value="Props passed between components" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="588" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v31" value="Parent → child" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="631" width="440" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v32" value="Main props" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="631" width="948" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v33" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventsPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventList&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventCard&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="676" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v34" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;events: EventSummary[]&lt;/span&gt; to the list, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;event: EventSummary&lt;/span&gt; to each card" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="676" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v35" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetailsPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetails&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="728" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v36" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;event: EventDetail&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="728" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v37" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetails&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;VenueDetails&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="780" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v38" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;venueId: number | null&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;name: string | null&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;address: string | null&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;capacity: number | null&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="780" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v39" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetailsPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;RsvpActions&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="832" width="440" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="v40" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;status: RsvpStatus&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;signInTo: string&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;pending: boolean&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;error: ApiError | null&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onRsvp: () =&amp;gt; void&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onCancel: () =&amp;gt; void&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="832" width="948" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="v41" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetailsPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;OrganiserLinks&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="896" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v42" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;eventId: number&lt;/span&gt;. Render this branch when the signed-in user owns the event." style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="896" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v43" value="&lt;b&gt;Data and form ownership&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventDetailsPage&lt;/span&gt; passes down the public event and derives RSVP status from the signed-in account&amp;#x27;s event list. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;VenueDetails&lt;/span&gt; shows “Venue not set” for a null venue ID. A venue with a name and a null address still shows its name." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="967" width="1388" height="83" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-3" name="Account pages">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" math="0" shadow="0" background="#F4F7FC" pageHeight="1018">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2" value="NC PLUS ONE" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#365D8D;fontFamily=Arial;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="29" width="1388" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v3" value="Account pages" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=34;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="58" width="1388" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v4" value="Controlled auth forms and the signed-in user&amp;#x27;s RSVP history" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#435671;fontFamily=Arial;fontSize=16;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="108" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v5" value="" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#D3DDEB;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="153" width="1388" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="LoginPage" value="&lt;b&gt;LoginPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;login mutation&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="56" y="191" width="252" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="LoginForm" value="&lt;b&gt;LoginForm&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;controlled&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="56" y="284" width="252" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="RegisterPage" value="&lt;b&gt;RegisterPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;registration mutation&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="351" y="191" width="252" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="RegisterForm" value="&lt;b&gt;RegisterForm&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;controlled&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="351" y="284" width="252" height="61" as="geometry" />
+        </mxCell>
+        <mxCell id="SignIn" value="&lt;b&gt;RequireSignIn&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;shared guard&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#F0ECFE;strokeColor=#BCB1DE;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="983" y="191" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MyEventsPage" value="&lt;b&gt;MyEventsPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;useMyEvents()&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="983" y="278" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MyStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="795" y="365" width="181" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="MyEventsList" value="&lt;b&gt;MyEventsList&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="365" width="202" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="MyEventRow" value="&lt;b&gt;MyEventRow&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;one per RSVP&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1110" y="448" width="202" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="MyLink" value="&lt;b&gt;EventLink&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1013" y="531" width="170" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="MyTime" value="&lt;b&gt;EventTime&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1239" y="531" width="170" height="56" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="LoginPage" target="LoginForm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="RegisterPage" target="RegisterForm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="SignIn" target="MyEventsPage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="MyEventsPage" target="MyStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="MyEventsPage" target="MyEventsList">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="MyEventsList" target="MyEventRow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="MyEventRow" target="MyLink">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="MyEventRow" target="MyTime">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v25" value="Props passed between components" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="625" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v26" value="Parent → child" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="668" width="440" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v27" value="Main props" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="668" width="948" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v28" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;LoginPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;LoginForm&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="713" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v29" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;initialEmail?: string&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onSubmit: (values: LoginRequest) =&amp;gt; void&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;pending: boolean&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;error: ApiError | null&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="713" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v30" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;RegisterPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;RegisterForm&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="765" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v31" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onSubmit: (values: RegisterRequest) =&amp;gt; void&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;pending: boolean&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;error: ApiError | null&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="765" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v32" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;MyEventsPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;MyEventsList&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;MyEventRow&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="817" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v33" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;events: MyEvent[]&lt;/span&gt; and &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;total: number&lt;/span&gt; to the list, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;event: MyEvent&lt;/span&gt; to each row" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="817" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v34" value="&lt;b&gt;Data and form ownership&lt;/b&gt;&lt;br&gt;Each auth form owns its draft inputs. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;LoginPage&lt;/span&gt; hands valid login results to &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AuthProvider&lt;/span&gt;. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;RegisterPage&lt;/span&gt; routes to sign-in after successful registration." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="888" width="1388" height="82" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page-4" name="Event management">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1480" math="0" shadow="0" background="#F4F7FC" pageHeight="1066">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2" value="NC PLUS ONE" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#365D8D;fontFamily=Arial;fontSize=13;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="29" width="1388" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="v3" value="Event management pages" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=34;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="58" width="1388" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v4" value="Create, edit, and attendee routes with their access guards" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#435671;fontFamily=Arial;fontSize=16;fontStyle=0;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="108" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v5" value="" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#D3DDEB;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="153" width="1388" height="2" as="geometry" />
+        </mxCell>
+        <mxCell id="SignIn" value="&lt;b&gt;RequireSignIn&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;shared guard&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#F0ECFE;strokeColor=#BCB1DE;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="553" y="188" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CreatePage" value="&lt;b&gt;CreateEventPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;create mutation&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="55" y="282" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CreateForm" value="&lt;b&gt;EventForm&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;shared, controlled, create mode&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="55" y="377" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Organiser" value="&lt;b&gt;RequireOrganiser&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;useEvent(eventId)&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#F0ECFE;strokeColor=#BCB1DE;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="716" y="282" width="310" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="GuardStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="369" y="377" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EditPage" value="&lt;b&gt;EditEventPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;update mutation&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="606" y="377" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="EditForm" value="&lt;b&gt;EventForm&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;shared, controlled, edit mode&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFF1DE;strokeColor=#E5B985;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="606" y="471" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AttendeesPage" value="&lt;b&gt;AttendeesPage&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;useAttendees(eventId)&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E8F0FF;strokeColor=#9CB6E5;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1066" y="377" width="248" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AttendeeStatus" value="&lt;b&gt;StatusMessage&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#E3F7F2;strokeColor=#8CC9B9;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="932" y="471" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AttendeeList" value="&lt;b&gt;AttendeeList&lt;/b&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1214" y="471" width="196" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="AttendeeRow" value="&lt;b&gt;AttendeeRow&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;font-size:13px;color:#435671&quot;&gt;one per attendee&lt;/span&gt;" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=center;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="1214" y="565" width="196" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="SignIn" target="CreatePage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="CreatePage" target="CreateForm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e19" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="SignIn" target="Organiser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e20" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Organiser" target="GuardStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Organiser" target="EditPage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e22" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="EditPage" target="EditForm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="Organiser" target="AttendeesPage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e24" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AttendeesPage" target="AttendeeStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e25" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AttendeesPage" target="AttendeeList">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e26" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;rounded=1;html=1;endArrow=block;endFill=1;strokeColor=#607B9B;strokeWidth=2;jettySize=auto;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="AttendeeList" target="AttendeeRow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v27" value="Props passed between components" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#16263D;fontFamily=Arial;fontSize=22;fontStyle=1;align=left;verticalAlign=middle;spacing=0;" vertex="1" parent="1">
+          <mxGeometry x="46" y="660" width="1388" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="v28" value="Parent → child" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="703" width="440" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v29" value="Main props" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#173454;strokeColor=#173454;fontColor=#FFFFFF;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="703" width="948" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="v30" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;RequireOrganiser&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EditEventPage&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AttendeesPage&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="748" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v31" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;event: EventDetail&lt;/span&gt;, from the shared event detail query" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="748" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v32" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;CreateEventPage&lt;/span&gt; / &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EditEventPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventForm&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="800" width="440" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="v33" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;mode: &amp;quot;create&amp;quot; | &amp;quot;edit&amp;quot;&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;initialValues: EventFormValues&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;onSubmit: (values: EventFormValues) =&amp;gt; void&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;pending: boolean&lt;/span&gt;, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;error: ApiError | null&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#EBF1FA;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="800" width="948" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="v34" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AttendeesPage&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AttendeeList&lt;/span&gt; → &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AttendeeRow&lt;/span&gt;" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="864" width="440" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v35" value="&lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;attendees: Attendee[]&lt;/span&gt; to the list, &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;attendee: Attendee&lt;/span&gt; to each row" style="rounded=0;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=middle;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="486" y="864" width="948" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="v36" value="&lt;b&gt;Data and form ownership&lt;/b&gt;&lt;br&gt;The page submits the API mutation and handles navigation. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;EventForm&lt;/span&gt; owns the draft inputs. &lt;span style=&quot;font-family:Menlo,monospace;font-size:0.94em&quot;&gt;AttendeesPage&lt;/span&gt; mounts after the organiser check, so it starts fetching only after the check passes." style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#D3DDEB;fontColor=#16263D;fontFamily=Arial;fontSize=15;fontStyle=0;align=left;verticalAlign=top;spacing=12;" vertex="1" parent="1">
+          <mxGeometry x="46" y="935" width="1388" height="83" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
