@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.exception_handlers import request_validation_exception_handler
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from src.routes.auth.login.login import router as auth_router
@@ -10,6 +11,12 @@ from src.routes.events.attendees.attendees import router as atten_router
 from src.routes.user.events.events import router as user_router
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 app.include_router(auth_router)
 app.include_router(events_router)
 app.include_router(rsvp_router)
