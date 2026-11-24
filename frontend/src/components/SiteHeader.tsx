@@ -1,17 +1,22 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, type KeyboardEvent } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-export default function SiteHeader({ links, onSignOut }) {
+interface SiteHeaderProps {
+  links: readonly { to: string; label: string; account?: boolean }[];
+  onSignOut?: (() => void) | undefined;
+}
+
+export default function SiteHeader({ links, onSignOut }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
-  const toggle = useRef(null);
+  const toggle = useRef<HTMLButtonElement>(null);
   const closeMenu = () => setOpen(false);
 
   function handleSignOut() {
     closeMenu();
-    onSignOut();
+    onSignOut?.();
   }
 
-  function handleEscape(event) {
+  function handleEscape(event: KeyboardEvent<HTMLElement>) {
     if (open && event.key === 'Escape') {
       closeMenu();
       toggle.current?.focus();
