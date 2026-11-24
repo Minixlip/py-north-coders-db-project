@@ -5,7 +5,13 @@ import { useAuth } from '../context/AuthContext';
 const inputClass =
   'mt-2 block min-h-11 w-full rounded-lg border border-slate-400 bg-white px-3 py-2 text-slate-950 outline-none focus-visible:border-violet-700 focus-visible:ring-2 focus-visible:ring-violet-600';
 
-const returnPaths = ['/my-events', '/events/new', '/events/:eventId/edit', '/events/:eventId/attendees'];
+const returnPaths = [
+  '/my-events',
+  '/events/new',
+  '/events/:eventId',
+  '/events/:eventId/edit',
+  '/events/:eventId/attendees',
+];
 
 export default function Login() {
   const [formData, setFormData] = useState({

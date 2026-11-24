@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import EventRsvp from '../components/EventRsvp';
 import EventSchedule from '../components/EventSchedule';
 import { useEvent, type EventDetail } from '../hooks/useEvent';
 
@@ -68,6 +69,7 @@ function EventDetails({ event }: { event: EventDetail }) {
           )}
         </section>
       </div>
+      <EventRsvp eventId={event.id} />
     </article>
   );
 }

@@ -10,6 +10,7 @@ type MyEvent = Pick<EventSummary, 'id' | 'title' | 'starts_at'> & {
 
 type MyEventsResult = {
   token: string;
+  requestVersion: number;
   events: MyEvent[];
   error: string | null;
 };
@@ -17,6 +18,7 @@ type MyEventsResult = {
 export function useMyEvents() {
   const { token, logout } = useAuth();
   const [result, setResult] = useState<MyEventsResult | null>(null);
+  const [requestVersion, setRequestVersion] = useState(0);
 
   useEffect(() => {
     const requestToken = token;
@@ -24,7 +26,9 @@ export function useMyEvents() {
     const controller = new AbortController();
 
     const finish = (events: MyEvent[], error: string | null = null) => {
-      if (!controller.signal.aborted) setResult({ token: requestToken, events, error });
+      if (!controller.signal.aborted) {
+        setResult({ token: requestToken, requestVersion, events, error });
+      }
     };
 
     async function loadMyEvents() {
@@ -56,13 +60,20 @@ export function useMyEvents() {
 
     void loadMyEvents();
     return () => controller.abort();
-  }, [token, logout]);
+  }, [token, requestVersion, logout]);
 
-  const current = result?.token === token ? result : null;
+  const current = result?.token === token && result.requestVersion === requestVersion
+    ? result
+    : null;
+
+  function refresh() {
+    setRequestVersion((version) => version + 1);
+  }
 
   return {
     events: current?.events ?? [],
     isLoading: Boolean(token) && !current,
     error: current?.error ?? null,
+    refresh,
   };
 }
