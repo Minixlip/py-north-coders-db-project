@@ -23,22 +23,31 @@ export function AuthProvider({ children }: AuthProviderProps) {
   });
 
   async function login(email: string, password: string): Promise<void> {
-    const response = await fetch('http://localhost:3000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Invalid credentials');
+    let response: Response;
+    try {
+      response = await fetch('http://127.0.0.1:8000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+    } catch {
+      throw new Error('Could not reach the API. Check that the server is running.');
     }
 
-    const data: LoginResponse = await response.json();
+    if (response.status === 401) {
+      throw new Error('Invalid email or password.');
+    }
 
-    if (!data.access_token) {
-      throw new Error('Token missing');
+    if (!response.ok) {
+      throw new Error('Unable to log in. Please try again.');
+    }
+
+    const data: LoginResponse | null = await response.json().catch(() => null);
+
+    if (typeof data?.access_token !== 'string' || !data.access_token) {
+      throw new Error('The API returned an invalid session.');
     }
 
     // Save token to session storage
