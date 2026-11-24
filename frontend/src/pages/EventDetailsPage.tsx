@@ -4,6 +4,9 @@ import EventSchedule from '../components/EventSchedule';
 import { useAuth } from '../context/AuthContext';
 import { useEvent, type EventDetail } from '../hooks/useEvent';
 
+const organiserLink =
+  'inline-flex min-h-11 items-center rounded-lg border border-violet-200 px-4 font-semibold text-violet-800 hover:bg-violet-50';
+
 export default function EventDetailsPage() {
   const { eventId } = useParams();
   const result = useEvent(eventId);
@@ -42,12 +45,10 @@ function EventDetails({ event }: { event: EventDetail }) {
           {title}
         </h1>
         {isOrganiser && (
-          <Link
-            className="inline-flex min-h-11 items-center rounded-lg border border-violet-200 px-4 font-semibold text-violet-800 hover:bg-violet-50"
-            to={`/events/${event.id}/edit`}
-          >
-            Edit event
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link className={organiserLink} to={`/events/${event.id}/edit`}>Edit event</Link>
+            <Link className={organiserLink} to={`/events/${event.id}/attendees`}>View attendees</Link>
+          </div>
         )}
       </div>
       {description && (
