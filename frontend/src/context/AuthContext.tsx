@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 
 type Credentials = {
   email: string;
@@ -11,6 +11,7 @@ type RegistrationDetails = Credentials & {
 
 interface AuthContextType {
   token: string | null;
+  userId: number | null;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (details: RegistrationDetails) => Promise<void>;
@@ -25,7 +26,40 @@ interface LoginResponse {
   access_token: string;
 }
 
+type Session = {
+  token: string;
+  userId: number;
+  expiresAt: number;
+};
+
 const AuthContext = createContext<AuthContextType | null>(null);
+
+function readSession(token: string | null): Session | null {
+  if (!token) return null;
+  const parts = token.split('.');
+  const payload = parts[1];
+  if (parts.length !== 3 || !payload || parts.some((part) => !/^[A-Za-z0-9_-]+$/.test(part))) {
+    return null;
+  }
+
+  try {
+    const { sub, exp }: { sub?: unknown; exp?: unknown } = JSON.parse(
+      atob(payload.replace(/-/g, '+').replace(/_/g, '/')),
+    );
+
+    if (typeof sub !== 'string' || !/^[1-9]\d*$/.test(sub) || typeof exp !== 'number' || !Number.isSafeInteger(exp)) {
+      return null;
+    }
+
+    const userId = Number(sub);
+    const expiresAt = exp * 1000;
+    if (!Number.isSafeInteger(userId) || expiresAt <= Date.now()) return null;
+
+    return { token, userId, expiresAt };
+  } catch {
+    return null;
+  }
+}
 
 async function postAuth(
   action: 'login' | 'register',
@@ -45,9 +79,22 @@ async function postAuth(
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [token, setToken] = useState<string | null>(() => {
-    return sessionStorage.getItem('token');
-  });
+  const [session, setSession] = useState(() => readSession(sessionStorage.getItem('token')));
+
+  const logout = useCallback(() => {
+    sessionStorage.removeItem('token');
+    setSession(null);
+  }, []);
+
+  useEffect(() => {
+    if (!session) {
+      sessionStorage.removeItem('token');
+      return;
+    }
+
+    const timer = window.setTimeout(logout, Math.max(0, session.expiresAt - Date.now()));
+    return () => window.clearTimeout(timer);
+  }, [session, logout]);
 
   async function login(email: string, password: string): Promise<void> {
     const response = await postAuth('login', { email, password });
@@ -62,15 +109,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     const data: LoginResponse | null = await response.json().catch(() => null);
 
-    if (typeof data?.access_token !== 'string' || !data.access_token) {
+    const nextSession = readSession(typeof data?.access_token === 'string' ? data.access_token : null);
+    if (!nextSession) {
       throw new Error('The API returned an invalid session.');
     }
 
-    // Save token to session storage
-    sessionStorage.setItem('token', data.access_token);
-
-    // Update React state
-    setToken(data.access_token);
+    sessionStorage.setItem('token', nextSession.token);
+    setSession(nextSession);
   }
 
   async function register(details: RegistrationDetails): Promise<void> {
@@ -89,16 +134,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
   }
 
-  function logout(): void {
-    sessionStorage.removeItem('token');
-    setToken(null);
-  }
-
   return (
     <AuthContext.Provider
       value={{
-        token,
-        isAuthenticated: !!token,
+        token: session?.token ?? null,
+        userId: session?.userId ?? null,
+        isAuthenticated: session !== null,
         login,
         register,
         logout,

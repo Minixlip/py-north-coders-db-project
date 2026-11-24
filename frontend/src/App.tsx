@@ -1,8 +1,12 @@
 import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom';
 
+import OrganiserRoutes from './components/OrganiserRoutes.js';
+import ProtectedRoutes from './components/ProtectedRoutes.js';
 import SiteHeader from './components/SiteHeader.js';
 import { AuthProvider, useAuth } from './context/AuthContext.js';
+import AttendeesPage from './pages/AttendeesPage.js';
 import CreateEventPage from './pages/CreateEventPage.js';
+import EditEventPage from './pages/EditEventPage.js';
 import EventDetailsPage from './pages/EventDetailsPage.js';
 import EventsPage from './pages/EventsPage.js';
 import HomePage from './pages/HomePage.js';
@@ -85,14 +89,26 @@ export default function App() {
               path="/register"
               element={<Register />}
             />
-            <Route
-              path="/my-events"
-              element={<MyEventsPage />}
-            />
-            <Route
-              path="/events/new"
-              element={<CreateEventPage />}
-            />
+            <Route element={<ProtectedRoutes />}>
+              <Route
+                path="/my-events"
+                element={<MyEventsPage />}
+              />
+              <Route
+                path="/events/new"
+                element={<CreateEventPage />}
+              />
+              <Route element={<OrganiserRoutes />}>
+                <Route
+                  path="/events/:eventId/edit"
+                  element={<EditEventPage />}
+                />
+                <Route
+                  path="/events/:eventId/attendees"
+                  element={<AttendeesPage />}
+                />
+              </Route>
+            </Route>
             <Route
               path="*"
               element={<NotFoundPage />}

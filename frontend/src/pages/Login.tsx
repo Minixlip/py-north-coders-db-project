@@ -1,9 +1,11 @@
 import { useState, type FormEvent } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, matchPath, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const inputClass =
   'mt-2 block min-h-11 w-full rounded-lg border border-slate-400 bg-white px-3 py-2 text-slate-950 outline-none focus-visible:border-violet-700 focus-visible:ring-2 focus-visible:ring-violet-600';
+
+const returnPaths = ['/my-events', '/events/new', '/events/:eventId/edit', '/events/:eventId/attendees'];
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -13,7 +15,13 @@ export default function Login() {
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login } = useAuth();
+  const { search } = useLocation();
   const navigate = useNavigate();
+  const next = new URLSearchParams(search).get('next');
+  const nextPath = next?.split(/[?#]/, 1)[0];
+  const returnTo = next && nextPath && returnPaths.some((path) => matchPath(path, nextPath))
+    ? next
+    : '/events';
 
   async function handleLogin(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,7 +32,7 @@ export default function Login() {
 
     try {
       await login(formData.email.trim(), formData.password);
-      navigate('/events', { replace: true });
+      navigate(returnTo, { replace: true });
     } catch (failure) {
       setError(failure instanceof Error ? failure.message : 'Unable to log in.');
     } finally {
@@ -101,7 +109,7 @@ export default function Login() {
           New to Eventsy?{' '}
           <Link
             className="font-semibold text-violet-800 underline underline-offset-4"
-            to="/register"
+            to={{ pathname: '/register', search }}
           >
             Create an account
           </Link>

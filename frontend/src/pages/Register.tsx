@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const inputClass =
@@ -9,6 +9,7 @@ const emptyForm = { name: '', email: '', password: '' };
 
 export default function Register() {
   const { register } = useAuth();
+  const { search } = useLocation();
   const [formData, setFormData] = useState(emptyForm);
   const [status, setStatus] = useState<'idle' | 'pending' | 'registered'>('idle');
   const [error, setError] = useState('');
@@ -131,7 +132,7 @@ export default function Register() {
           {status !== 'registered' && 'Already have an account? '}
           <Link
             className="font-semibold text-violet-800 underline underline-offset-4"
-            to="/login"
+            to={{ pathname: '/login', search }}
           >
             Log in
           </Link>
