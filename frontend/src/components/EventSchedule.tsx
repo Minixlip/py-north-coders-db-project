@@ -5,7 +5,7 @@ const dateTimeFormatter = new Intl.DateTimeFormat('en-GB', {
 
 type EventScheduleProps = {
   startsAt: string;
-  endsAt: string;
+  endsAt?: string | undefined;
 };
 
 export default function EventSchedule({ startsAt, endsAt }: EventScheduleProps) {
@@ -17,12 +17,16 @@ export default function EventSchedule({ startsAt, endsAt }: EventScheduleProps) 
           {dateTimeFormatter.format(new Date(startsAt))}
         </time>
       </dd>
-      <dt className="font-medium text-slate-600">Ends</dt>
-      <dd className="text-slate-700">
-        <time dateTime={endsAt}>
-          {dateTimeFormatter.format(new Date(endsAt))}
-        </time>
-      </dd>
+      {endsAt !== undefined && (
+        <>
+          <dt className="font-medium text-slate-600">Ends</dt>
+          <dd className="text-slate-700">
+            <time dateTime={endsAt}>
+              {dateTimeFormatter.format(new Date(endsAt))}
+            </time>
+          </dd>
+        </>
+      )}
     </dl>
   );
 }

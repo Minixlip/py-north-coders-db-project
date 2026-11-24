@@ -3,7 +3,8 @@ import EventSchedule from './EventSchedule';
 import type { EventSummary } from '../hooks/useEvents';
 
 type EventCardProps = {
-  event: EventSummary;
+  event: Pick<EventSummary, 'id' | 'title' | 'starts_at'>
+    & Partial<Pick<EventSummary, 'description' | 'ends_at'>>;
 };
 
 export default function EventCard({ event }: EventCardProps) {
