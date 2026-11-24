@@ -1,12 +1,48 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom';
 
+import SiteHeader from './components/SiteHeader.js';
+import { AuthProvider, useAuth } from './context/AuthContext.js';
 import CreateEventPage from './pages/CreateEventPage.js';
 import EventsPage from './pages/EventsPage.js';
 import HomePage from './pages/HomePage.js';
 import MyEventsPage from './pages/MyEventsPage.js';
 import Login from './pages/Login.js';
 import Register from './pages/Register.js';
-import { AuthProvider } from './context/AuthContext.js';
+
+const navigation = [
+  { to: '/', label: 'Home' },
+  { to: '/events', label: 'Events' },
+  { to: '/my-events', label: 'My Events' },
+  { to: '/events/new', label: 'Create Event' },
+  { to: '/login', label: 'Log in', account: true },
+  { to: '/register', label: 'Register', account: true },
+];
+
+function SiteLayout() {
+  const { isAuthenticated, logout } = useAuth();
+
+  return (
+    <>
+      <a
+        className="skip-link"
+        href="#main-content"
+      >
+        Skip to content
+      </a>
+      <SiteHeader
+        links={navigation}
+        onSignOut={isAuthenticated ? logout : undefined}
+      />
+      <main
+        className="site-width py-8 sm:py-12"
+        id="main-content"
+        tabIndex={-1}
+      >
+        <Outlet />
+      </main>
+    </>
+  );
+}
 
 function NotFoundPage() {
   return (
@@ -27,23 +63,23 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route
-            index
-            element={<HomePage />}
-          />
-          <Route
-            path="/events"
-            element={<EventsPage />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-          <Route>
+          <Route element={<SiteLayout />}>
+            <Route
+              index
+              element={<HomePage />}
+            />
+            <Route
+              path="/events"
+              element={<EventsPage />}
+            />
+            <Route
+              path="/login"
+              element={<Login />}
+            />
+            <Route
+              path="/register"
+              element={<Register />}
+            />
             <Route
               path="/my-events"
               element={<MyEventsPage />}
@@ -52,11 +88,11 @@ export default function App() {
               path="/events/new"
               element={<CreateEventPage />}
             />
+            <Route
+              path="*"
+              element={<NotFoundPage />}
+            />
           </Route>
-          <Route
-            path="*"
-            element={<NotFoundPage />}
-          />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
