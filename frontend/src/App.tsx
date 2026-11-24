@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Outlet, Route, Routes } from 'react-router-dom';
 import SiteHeader from './components/SiteHeader.js';
 import { AuthProvider, useAuth } from './context/AuthContext.js';
 import CreateEventPage from './pages/CreateEventPage.js';
+import EventDetailsPage from './pages/EventDetailsPage.js';
 import EventsPage from './pages/EventsPage.js';
 import HomePage from './pages/HomePage.js';
 import MyEventsPage from './pages/MyEventsPage.js';
@@ -71,6 +72,10 @@ export default function App() {
             <Route
               path="/events"
               element={<EventsPage />}
+            />
+            <Route
+              path="/events/:eventId"
+              element={<EventDetailsPage />}
             />
             <Route
               path="/login"
