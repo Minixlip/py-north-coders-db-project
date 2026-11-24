@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import EventRsvp from '../components/EventRsvp';
 import EventSchedule from '../components/EventSchedule';
+import { useAuth } from '../context/AuthContext';
 import { useEvent, type EventDetail } from '../hooks/useEvent';
 
 export default function EventDetailsPage() {
@@ -29,14 +30,26 @@ export default function EventDetailsPage() {
 }
 
 function EventDetails({ event }: { event: EventDetail }) {
+  const { userId } = useAuth();
   const { title, description, starts_at, ends_at, venue_name, venue_address, venue_capacity } = event;
   const hasVenue = Boolean(venue_name || venue_address) || venue_capacity !== null;
+  const isOrganiser = userId !== null && event.organiser_id === userId;
 
   return (
     <article className="rounded-2xl border border-t-4 border-slate-200 border-t-violet-700 bg-white p-6 shadow-sm sm:p-9">
-      <h1 className="text-3xl font-bold tracking-tight break-words sm:text-4xl">
-        {title}
-      </h1>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <h1 className="min-w-0 flex-1 basis-64 text-3xl font-bold tracking-tight break-words sm:text-4xl">
+          {title}
+        </h1>
+        {isOrganiser && (
+          <Link
+            className="inline-flex min-h-11 items-center rounded-lg border border-violet-200 px-4 font-semibold text-violet-800 hover:bg-violet-50"
+            to={`/events/${event.id}/edit`}
+          >
+            Edit event
+          </Link>
+        )}
+      </div>
       {description && (
         <p className="mt-4 leading-relaxed break-words whitespace-pre-line text-slate-600">
           {description}

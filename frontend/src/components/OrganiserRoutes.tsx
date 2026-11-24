@@ -18,7 +18,7 @@ export default function OrganiserRoutes() {
   }
 
   if (userId !== null && result.event.organiser_id === userId) {
-    return <Outlet />;
+    return <Outlet context={result.event} />;
   }
 
   return (

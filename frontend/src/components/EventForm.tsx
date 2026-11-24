@@ -1,22 +1,26 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import type { VenueOption } from '../hooks/useVenues';
+import type { EventDetail } from '../hooks/useEvent';
+import type { CreateEventInput, UpdateEventInput } from '../hooks/useSaveEvent';
+import { useVenues } from '../hooks/useVenues';
 
-export type CreateEventInput = {
-  title: string;
-  description: string;
-  starts_at: string;
-  ends_at: string;
-  venue_id: number;
-};
-
-type EventFormProps = {
-  venues: VenueOption[];
-  onSubmit: (event: CreateEventInput, signal: AbortSignal) => Promise<void>;
-};
+type EventFormProps =
+  | {
+    event?: undefined;
+    onSubmit: (event: CreateEventInput, signal: AbortSignal) => Promise<void>;
+  }
+  | {
+    event: EventDetail;
+    onSubmit: (changes: UpdateEventInput, signal: AbortSignal) => Promise<void>;
+  };
 
 const emptyForm = { title: '', description: '', startsAt: '', endsAt: '', venueId: '' };
 const fieldClass =
   'mt-2 block min-h-11 w-full min-w-0 rounded-lg border border-slate-400 bg-white px-3 py-2 text-slate-950 outline-none focus-visible:border-violet-700 focus-visible:ring-2 focus-visible:ring-violet-600';
+
+function toLocalInput(date: Date) {
+  const wallTime = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
+  return wallTime.toISOString().slice(0, 16);
+}
 
 function parseLocalTime(value: string): Date | null {
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(value)) return null;
@@ -25,17 +29,48 @@ function parseLocalTime(value: string): Date | null {
   if (!Number.isFinite(date.getTime())) return null;
 
   // Check that an invalid date or a daylight-saving gap didn't change the entered time.
-  const wallTime = new Date(date.getTime() - date.getTimezoneOffset() * 60_000);
-  return wallTime.toISOString().slice(0, 16) === value ? date : null;
+  return toLocalInput(date) === value ? date : null;
 }
 
-export default function EventForm({ venues, onSubmit }: EventFormProps) {
-  const [form, setForm] = useState(emptyForm);
+export default function EventForm(props: EventFormProps) {
+  const { event: existingEvent } = props;
+  const { state, retry } = useVenues();
+  const [initialForm] = useState(() => existingEvent ? {
+    title: existingEvent.title,
+    description: existingEvent.description ?? '',
+    startsAt: toLocalInput(new Date(existingEvent.starts_at)),
+    endsAt: toLocalInput(new Date(existingEvent.ends_at)),
+    venueId: existingEvent.venue_id === null ? '' : String(existingEvent.venue_id),
+  } : emptyForm);
+  const [form, setForm] = useState(initialForm);
   const [error, setError] = useState('');
   const [isSaving, setIsSaving] = useState(false);
   const request = useRef<AbortController | null>(null);
 
   useEffect(() => () => request.current?.abort(), []);
+
+  if (state.status === 'loading') {
+    return <p className="mt-5" role="status">Loading venues…</p>;
+  }
+  if (state.status === 'error') {
+    return (
+      <div className="mt-5 space-y-3">
+        <p className="text-red-900" role="alert">{state.message}</p>
+        <button className="min-h-11 font-semibold text-violet-800 underline" onClick={retry} type="button">
+          Try again
+        </button>
+      </div>
+    );
+  }
+
+  const { venues } = state;
+  const isEditing = existingEvent !== undefined;
+  if (!isEditing && venues.length === 0) {
+    return <p className="mt-5 text-slate-600">There are no venues available yet.</p>;
+  }
+
+  const currentVenueMissing = existingEvent?.venue_id != null
+    && !venues.some(({ id }) => id === existingEvent.venue_id);
 
   function updateField(field: keyof typeof emptyForm, value: string) {
     setForm((previous) => ({ ...previous, [field]: value }));
@@ -51,19 +86,26 @@ export default function EventForm({ venues, onSubmit }: EventFormProps) {
       return;
     }
 
-    const startsAt = parseLocalTime(form.startsAt);
-    const endsAt = parseLocalTime(form.endsAt);
+    const startChanged = !existingEvent || form.startsAt !== initialForm.startsAt;
+    const endChanged = !existingEvent || form.endsAt !== initialForm.endsAt;
+    const startsAt = existingEvent && !startChanged
+      ? new Date(existingEvent.starts_at)
+      : parseLocalTime(form.startsAt);
+    const endsAt = existingEvent && !endChanged
+      ? new Date(existingEvent.ends_at)
+      : parseLocalTime(form.endsAt);
     if (!startsAt || !endsAt) {
       setError('Choose valid start and end times in your local time zone.');
       return;
     }
-    if (endsAt <= startsAt) {
+    if ((startChanged || endChanged) && endsAt <= startsAt) {
       setError('The end time must be after the start time.');
       return;
     }
 
     const venue = venues.find(({ id }) => String(id) === form.venueId);
-    if (!venue) {
+    const venueChanged = form.venueId !== initialForm.venueId;
+    if (!venue && (!isEditing || (venueChanged && form.venueId !== ''))) {
       setError('Choose a venue.');
       return;
     }
@@ -74,16 +116,30 @@ export default function EventForm({ venues, onSubmit }: EventFormProps) {
     setIsSaving(true);
 
     try {
-      await onSubmit({
-        title,
-        description: form.description,
-        starts_at: startsAt.toISOString(),
-        ends_at: endsAt.toISOString(),
-        venue_id: venue.id,
-      }, controller.signal);
+      if (props.event) {
+        const changes: UpdateEventInput = {};
+        if (form.title !== initialForm.title && title !== props.event.title) {
+          changes.title = title;
+        }
+        if (form.description !== initialForm.description) {
+          changes.description = form.description || null;
+        }
+        if (startChanged) changes.starts_at = startsAt.toISOString();
+        if (endChanged) changes.ends_at = endsAt.toISOString();
+        if (venueChanged) changes.venue_id = venue?.id ?? null;
+        await props.onSubmit(changes, controller.signal);
+      } else if (venue) {
+        await props.onSubmit({
+          title,
+          description: form.description,
+          starts_at: startsAt.toISOString(),
+          ends_at: endsAt.toISOString(),
+          venue_id: venue.id,
+        }, controller.signal);
+      }
     } catch (failure) {
       if (!controller.signal.aborted) {
-        setError(failure instanceof Error ? failure.message : 'Could not create the event.');
+        setError(failure instanceof Error ? failure.message : 'Could not save the event.');
       }
     } finally {
       if (!controller.signal.aborted) {
@@ -153,16 +209,23 @@ export default function EventForm({ venues, onSubmit }: EventFormProps) {
       </fieldset>
 
       <label className="block text-sm font-semibold">
-        Venue
+        Venue {isEditing && <span className="font-normal text-slate-600">(optional)</span>}
         <span className="relative block">
           <select
             className={`${fieldClass} appearance-none pr-10`}
             name="venueId"
             onChange={(event) => updateField('venueId', event.target.value)}
-            required
+            required={!isEditing}
             value={form.venueId}
           >
-            <option value="" disabled>Choose a venue</option>
+            <option value="" disabled={!isEditing}>
+              {isEditing ? 'No venue' : 'Choose a venue'}
+            </option>
+            {currentVenueMissing && (
+              <option value={existingEvent.venue_id ?? ''}>
+                {existingEvent.venue_name ?? 'Current venue'}
+              </option>
+            )}
             {venues.map(({ id, name, address }) => (
               <option key={id} value={id}>
                 {address ? `${name} — ${address}` : name}
@@ -184,7 +247,9 @@ export default function EventForm({ venues, onSubmit }: EventFormProps) {
         disabled={isSaving}
         type="submit"
       >
-        {isSaving ? 'Creating event…' : 'Create event'}
+        {isEditing
+          ? (isSaving ? 'Saving changes…' : 'Save changes')
+          : (isSaving ? 'Creating event…' : 'Create event')}
       </button>
     </form>
   );
