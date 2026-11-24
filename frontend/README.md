@@ -1,16 +1,21 @@
-# React + Vite
+# Eventsy
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Eventsy is a small app for finding and organising local events. You can browse events, RSVP, and see what you’re attending or hosting under **My Events**. If you organise an event, you can edit it and see who’s coming.
 
-Currently, two official plugins are available:
+The frontend uses React, TypeScript and Tailwind CSS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run it locally
 
-## React Compiler
+Set up the database and start the FastAPI server on `http://127.0.0.1:8000` using the [backend setup instructions](../README.md).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+In another terminal, run this from the project root.
 
-## Expanding the Oxlint configuration
+```sh
+cd frontend
+npm ci
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Open `http://localhost:5173`. The frontend calls FastAPI directly using CORS.
+
+The draw.io planning diagrams are in [docs](../docs).
