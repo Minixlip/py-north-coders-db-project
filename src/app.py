@@ -9,6 +9,7 @@ from src.routes.events.events import router as events_router
 from src.routes.events.rsvp.rsvp import router as rsvp_router
 from src.routes.events.attendees.attendees import router as atten_router
 from src.routes.user.events.events import router as user_router
+from src.routes.venues.venues import router as venues_router
 
 app = FastAPI()
 app.add_middleware(
@@ -22,6 +23,7 @@ app.include_router(events_router)
 app.include_router(rsvp_router)
 app.include_router(atten_router)
 app.include_router(user_router)
+app.include_router(venues_router)
 
 
 @app.exception_handler(RequestValidationError)

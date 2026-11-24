@@ -86,6 +86,7 @@ CORS credentials are disabled.
 | POST | `/api/auth/login` | Public | Log in with email and password to get a JWT |
 | GET | `/api/events` | Public | List events in start-time order |
 | GET | `/api/events/{id}` | Public | Get an event with venue details |
+| GET | `/api/venues` | Public | List venue IDs, names, and addresses for event forms |
 | POST | `/api/events` | JWT | Create an event as its organiser |
 | PATCH | `/api/events/{id}` | Organiser | Update selected event fields |
 | POST | `/api/events/{id}/rsvp` | JWT | RSVP to an event |
@@ -119,8 +120,8 @@ backend. Pass the API base URL to `createApiClient`, for example
 - The client normalizes errors to `ApiError` with a status, message, and any
   validation issues. Incomplete login bodies and invalid event detail IDs
   produce `422`. An RSVP cancellation returns `204` with an empty body.
-- Organiser stats, a standalone current-user profile, and a venue list are
-  absent from this backend.
+- Organiser stats and a standalone current-user profile are absent from this
+  backend.
 
 ## Tests
 
