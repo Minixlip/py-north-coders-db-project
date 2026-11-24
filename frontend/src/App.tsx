@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage.js';
 import MyEventsPage from './pages/MyEventsPage.js';
 import Login from './pages/Login.js';
 import Register from './pages/Register.js';
+import Footer from './components/Footer.js';
 
 const navigation = [
   { to: '/', label: 'Home' },
@@ -45,6 +46,7 @@ function SiteLayout() {
       >
         <Outlet />
       </main>
+      <Footer />
     </>
   );
 }
